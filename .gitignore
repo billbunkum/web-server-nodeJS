@@ -1,0 +1,5 @@
+node_modules/
+package-lock.json
+greetings.txt
+./weather-app/node_modules
+./web-server/node_modules
