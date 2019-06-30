@@ -1,5 +1,11 @@
 # Current LOCATION in tutorial
-	+ Section 6: Lesson 44 'express'
+	Section 6: Lesson 64 'git'
+
++ Lately
+	1. Updating my repos to make the web-server portion its own repo.
+	2. Played around w/ *git submodules* but decided it was not the way for me to go as the `weather app` is *not* a part of a larger `project` (the tutorial).
+
+* `https://github.com/billbunkum/web-server-nodeJS.git`
 
 # Goal of WEATHER APP
 
