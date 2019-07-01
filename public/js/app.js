@@ -18,12 +18,15 @@ weatherForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 	const location = search.value;
-	const weatherURL = `http://localhost:3000/weather?address=${location}`;
+// DEVELOPMENT url
+	const dev_weatherURL = `http://localhost:3000/weather?address=${location}`;
+// PRODUCTION url
+	const prod_weatherURL = `/weather?address=${location}`;
 
 	messageOne.textContent = 'Loading...';
 	messageTwo.textContent = '';
 
-	fetch(weatherURL).then( (response) => {
+	fetch(prod_weatherURL).then( (response) => {
 		response.json().then( (data) => {
 
 			if (data.error) {

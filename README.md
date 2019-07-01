@@ -136,3 +136,5 @@ app.listen(port, () => {
 });`
 	5. Must change the URL which `fetch()` uses in `public/js/app.js`
 	FROM `http://localhost:3000/weather?address` TO `/weather?...` 
+	6. Commit & PUSH to Git then to PUSH to Heroku
+	`s` 

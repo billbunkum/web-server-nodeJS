@@ -3,7 +3,11 @@ const path = require('path');
 // FOR ROUTING-EASE
 const express = require('express');
 const hbs = require('hbs');
+
 const app = express();
+// SETS port TO env VARIABLE GIVEN BY HEROKU OR TO 3000 local
+	// IS USED AT BOTTOM IN app.listen()
+const port = process.env.PORT || 3000;
 
 const forecast = require('./utils/forecast.js');
 const geocode = require('./utils/geocode.js');
@@ -138,6 +142,6 @@ app.get('*', (req, res) => {
 
 
 // LISTENER
-app.listen(3000, () => {
-	console.log('Server is up on 3000');
+app.listen(port, () => {
+	console.log('Server is up on ' + port);
 });
