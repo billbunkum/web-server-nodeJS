@@ -107,5 +107,32 @@ then() IS A promise
 		+ mac *needs* `-K`, otherwise *no flags*
 		+ Registers the key
 * Will need to share the `id_rsa.pub` file w/ Github -> can do this through their website once logged in.
-	6. `$ ssh -T git@github.com`
+
+### Applying to Github
+* Use to following command:
+	+ `$ ssh -T git@github.com`
 		+ Tests the SSH connection w/github. Will prompt, hit *yes* and you should be good.
+
+### Applying to Heroku
+* Use the following command:
+	1. `$ heroku keys:add`
+		+ Searches your local for a key -> *confirm* it to set up
+	2. `$ heroku create <unique-app-name>`
+		+ Starts up a new project on Heroku w/specified name
+		+ Provides 1) a front-facing URL and 2) a git repo for code where app is stored.
+	3. Add `"start": "node src/app.js"` to package.json
+		+ Shows Heroku where *app starts*
+		+ Also allows for `$ npm run start` to *run* the `start` script and thus *run* the application.
+	4. Add in `src/app.js` > `const port = process.env.PORT || 3000;` beneath `const app = express();`
+		+ Changes the "listening" `port` from *3000* to the one which Heroku doles out. 
+		+ This replaces the usual code at the bottom of `app.js`
+		FROM `// LISTENER
+app.listen(3000, () => {
+	console.log('Server is up on 3000');
+});` TO
+`// LISTENER
+app.listen(port, () => {
+	console.log('Server is up on ' + port);
+});`
+	5. Must change the URL which `fetch()` uses in `public/js/app.js`
+	FROM `http://localhost:3000/weather?address` TO `/weather?...` 
