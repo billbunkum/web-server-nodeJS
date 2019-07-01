@@ -79,7 +79,8 @@ app.get('/weather', (req, res) => {
 			res.send({
 				error: error,
 				location: location,
-				hourly: parsedData.hourly.summary
+				hourly: parsedData.hourly.summary,
+				apparentTemp: parsedData.hourly.data[0].apparentTemperature
 			});
 		});
 	});
