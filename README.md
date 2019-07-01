@@ -1,5 +1,5 @@
 # Current LOCATION in tutorial
-	Section 6: Lesson 64 'git'
+	Section 9: Lesson 64 'git'
 
 + Lately
 	1. Updating my repos to make the web-server portion its own repo.
@@ -87,3 +87,25 @@ then() IS A promise
 		console.log('promise data -> ', data);
 	});
 });`
+
+## Setting up SSH (key pairs)
+* Makes everything easier (and more secure) when *pushing* to Git or Heroku
+	1. `$ ls -la ~/.ssh` <- checks to see if *ssh keypairs* have been generated
+	2. `$ ssh-keygen -t rsa -b 4096 -C "<foo@bar.com>"`
+		+ `-t` type of encoding
+		+ `-b` # of bits to use for key *4096* is standard
+		+ `-C` comment
+		+ When prompted, sometimes password is used, sometimes not.
+	3. Generates (2) files in `~/.ssh`
+		1. id_rsa *secret* key
+		2. id_rsa.pub *publically* shared key
+	4. `$ eval "$(ssh-agent -s)"` 
+		+ Windows *no* double quotes
+		+ Makes sure the program is *running*
+		+ `-s` for *start*
+	5. `$ ssh-add -K <path>` e.g. `~/.ssh/id_rsa`
+		+ mac *needs* `-K`, otherwise *no flags*
+		+ Registers the key
+* Will need to share the `id_rsa.pub` file w/ Github -> can do this through their website once logged in.
+	6. `$ ssh -T git@github.com`
+		+ Tests the SSH connection w/github. Will prompt, hit *yes* and you should be good.
